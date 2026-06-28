@@ -42,7 +42,6 @@
 - [Performance](#-performance)
 - [Future Improvements](#-future-improvements)
 - [Why This Project](#-why-this-project)
-- [Resume Impact](#-resume-impact)
 
 ---
 
@@ -733,15 +732,6 @@ This project was built to demonstrate practical command of the infrastructure-le
 
 Every architectural decision in this project mirrors how production systems at companies like Stripe, GitHub, and Cloudflare are built. The use of Redis for rate limiting, the separation of config persistence from ephemeral state, and the stateless Express server are all patterns directly applicable to large-scale API infrastructure.
 
----
-
-## 📄 Resume Impact
-
-> **Token Bucket Rate Limiter** — *Full-Stack · Node.js · Redis · MongoDB · React*
->
-> Built a full-stack API rate limiting platform implementing the Token Bucket algorithm from scratch. Used Redis for O(1) bucket state management (two-command check-and-decrement per request) and MongoDB Atlas for persistent API key storage. Integrated Privy JWT authentication across a custom Express middleware chain. Delivered a real-time React dashboard with animated token visualization, refill countdown, and burst request simulation. Designed for horizontal scalability — stateless servers share Redis bucket state with no coordination overhead.
-
----
 
 ## 📜 License
 
