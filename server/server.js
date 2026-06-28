@@ -13,9 +13,25 @@ const app = express() ;
 
 connectDb() ;
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.FRONTEND_URL,
+];
+
 app.use(
   cors({
-    origin: "https://token-based-rate-limiter.vercel.app",
+    origin: (origin, callback) => {
+      // Allow requests from Postman or server-to-server requests
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: [
       "Content-Type",
@@ -25,6 +41,8 @@ app.use(
     credentials: true,
   })
 );
+
+
 app.use(express.json());
 
 // routes 
