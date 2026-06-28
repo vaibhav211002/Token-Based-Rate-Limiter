@@ -4,7 +4,7 @@ import { usePrivy } from "@privy-io/react-auth";
 import "./App.css";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: import.meta.env.VITE_SERVER_URL||"http://localhost:5000",
 });
 
 // ── Toast system ──────────────────────────────────────────────────────────────

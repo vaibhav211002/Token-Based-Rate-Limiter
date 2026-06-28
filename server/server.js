@@ -12,9 +12,19 @@ const protectedRoutes = require("./routes/protectedRoutes");
 const app = express() ;
 
 connectDb() ;
-app.use(cors(
 
-));
+app.use(
+  cors({
+    origin: "https://token-based-rate-limiter.vercel.app",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "x-api-key",
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // routes 
