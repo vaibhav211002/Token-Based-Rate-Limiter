@@ -586,3 +586,239 @@ body { background: var(--bg); min-height: 100vh; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* ── Stop button ─────────────────────────────────────────────────────────────── */
+.btn-stop {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid rgba(240,92,92,.35);
+  outline: none;
+  background: rgba(240,92,92,.1);
+  color: var(--accent-red);
+  transition: background .15s, border-color .15s, transform .1s, opacity .15s;
+}
+
+.btn-stop:hover:not(:disabled) {
+  background: rgba(240,92,92,.2);
+  border-color: rgba(240,92,92,.6);
+}
+
+.btn-stop:active:not(:disabled) { transform: scale(.97); }
+
+.btn-stop:disabled {
+  opacity: .25;
+  cursor: not-allowed;
+}
+
+/* ── Bucket block refill flash animation ─────────────────────────────────────── */
+@keyframes block-pop {
+  0%   { transform: scaleY(1);   opacity: .5; }
+  40%  { transform: scaleY(1.18); opacity: 1; }
+  70%  { transform: scaleY(.95); }
+  100% { transform: scaleY(1);   opacity: 1; }
+}
+
+.bucket-block--new {
+  animation: block-pop .45s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Learn section ───────────────────────────────────────────────────────────── */
+.learn-section {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px 72px;
+}
+
+.learn-header {
+  text-align: center;
+  padding: 56px 0 40px;
+  border-top: 1px solid var(--border);
+}
+
+.learn-header-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  margin-bottom: 12px;
+}
+
+.learn-header-title {
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -.6px;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.learn-header-sub {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Accordion cards */
+.learn-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.learn-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color .2s;
+}
+
+.learn-card--open {
+  border-color: var(--accent-blue);
+}
+
+.learn-card-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+  transition: background .15s;
+}
+
+.learn-card-trigger:hover { background: var(--surface-2); }
+
+.learn-card-emoji {
+  font-size: 22px;
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+}
+
+.learn-card-titles {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.learn-card-title {
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: -.2px;
+}
+
+.learn-card-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.learn-card-chevron {
+  font-size: 11px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.learn-card-body {
+  padding: 4px 20px 24px 66px;
+  animation: fade-in .2s ease;
+}
+
+/* Text inside learn cards */
+.learn-p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.learn-p strong { color: var(--text); font-weight: 600; }
+.learn-p code {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: var(--accent-green);
+}
+
+/* Diagram blocks */
+.learn-diagram {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin: 14px 0 18px;
+  overflow-x: auto;
+}
+
+.learn-diagram pre {
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #8899bb;
+  padding: 16px 20px;
+  white-space: pre;
+  margin: 0;
+}
+
+/* Algorithm comparison grid */
+.learn-algo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.learn-algo-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+
+.learn-algo-name {
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.learn-algo-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 3px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.learn-algo-row span:last-child { color: var(--text); font-weight: 500; }
+
+.learn-algo-desc {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+/* Responsive for learn section */
+@media (max-width: 680px) {
+  .learn-algo-grid { grid-template-columns: 1fr; }
+  .learn-card-body { padding-left: 20px; }
+  .learn-diagram pre { font-size: 11px; }
+  .learn-header-title { font-size: 22px; }
+}

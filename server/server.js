@@ -5,7 +5,7 @@ const connectDb = require("./config/db");
 // const redis = require("./config/redis");
 const { connect } = require("mongoose");
 // console.log(process.env.REDIS_URL);
-const apiKeyRoutes =require("./routes/apiKeyRoutes");
+const apiKeyRoutes =require("./routes/apikeyroutes");
 const protectedRoutes = require("./routes/protectedRoutes");
 
 
