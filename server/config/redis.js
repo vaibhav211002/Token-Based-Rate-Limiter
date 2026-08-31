@@ -6,7 +6,7 @@ try {
     redis = process.env.REDIS_URL
         ? new Redis(process.env.REDIS_URL)
         : new Redis({
-              host: "redis://127.0.0.1:6379",
+              host: "redis",
               port: 6379,
           });
 

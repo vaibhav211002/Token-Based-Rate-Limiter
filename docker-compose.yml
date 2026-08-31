@@ -1,0 +1,35 @@
+services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+
+    env_file:
+      - ./server/.env
+
+    environment:
+      REDIS_URL: redis://redis:6379
+
+    ports:
+      - "5000:5000"
+
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+
+      args:
+        VITE_SERVER_URL: http://localhost:5000
+        VITE_PRIVY_APP_ID: cmqxiaytu00ef0bl9hydq68e2
+
+    ports:
+      - "3000:80"
+
+    depends_on:
+      - backend
